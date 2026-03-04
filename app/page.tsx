@@ -5,9 +5,7 @@ import { Great_Vibes, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Max from "../public/max.jpg";
 import Flower from "../public/flower.png";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 
 const greatVibes = Great_Vibes({
   weight: "400",
@@ -25,100 +23,106 @@ const playfair = Playfair_Display({
   weight: ["400", "600", "700"],
 });
 
-export default function Home() {
-  const leftRef = useRef<HTMLDivElement | null>(null);
-  const rightRef = useRef<HTMLDivElement | null>(null);
-  const topRef = useRef<HTMLDivElement | null>(null);
-  const bottomRef = useRef<HTMLDivElement | null>(null);
+/* ================= HOOK ================= */
+function useInView() {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setShow(true);
+      },
+      { threshold: 0.6 }
+    );
 
-    const animate = (el: any, x = 0, y = 0, delay = 0) => {
-      gsap.fromTo(
-        el,
-        {
-          x,
-          y,
-          opacity: 0,
-          scale: 0.7,
-        },
-        {
-          x: 0,
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 3,
-          ease: "power3.out",
-          delay,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-          },
-        },
-      );
-    };
+    if (ref.current) observer.observe(ref.current);
 
-    animate(leftRef.current, -100, 0, 0.1);
-    animate(rightRef.current, 100, 0, 0.2);
-    animate(topRef.current, 0, -100, 0.3);
-    animate(bottomRef.current, 0, 100, 0.4);
+    return () => observer.disconnect();
   }, []);
+
+  return { ref, show };
+}
+
+/* ================= COMPONENT ================= */
+export default function Home() {
+  const left1 = useInView();
+  const left2 = useInView();
+  const right1 = useInView();
+  const right2 = useInView();
 
   return (
     <div>
+      {/* ================= HERO ================= */}
       <div className="h-screen w-screen bg-black grid items-end">
         <div className="w-full h-full absolute">
           <Image src={Max} alt="hero" className="w-full h-full object-cover" />
         </div>
+
         <div className="relative text-white text-center top-60">
           <div className="flex items-center gap-3 px-22">
             <div className="flex-1 h-[1px] bg-white"></div>
-            <p className={`${montserrat.className} text-xs`}>PAWIWAHAN</p>
+            <p className={`${montserrat.className} text-xs`}>
+              PAWIWAHAN
+            </p>
             <div className="flex-1 h-[1px] bg-white"></div>
           </div>
-          <p className={`${greatVibes.className} antialiased text-4xl my-2`}>
+
+          <p className={`${greatVibes.className} text-4xl my-2`}>
             Wahyu & Milla
           </p>
+
           <p className={`${montserrat.className} text-xs`}>
             Jumat, 30 April 2026
           </p>
         </div>
+
+        {/* WAVE */}
         <svg
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
           className="w-full rotate-180 relative"
         >
           <path
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28..."
             opacity=".25"
             fill="#FFFFFF"
           ></path>
           <path
-            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            d="M0,0V15.81C13,36.92,27.64,56.86..."
             opacity=".5"
             fill="#FFFFFF"
           ></path>
           <path
-            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            d="M0,0V5.63C149.93,59,314.09..."
             fill="#FFFFFF"
           ></path>
         </svg>
       </div>
 
-      <div className="w-screen h-screen">
-        <div className="absolute" ref={leftRef}>
+      {/* ================= CONTENT ================= */}
+      <div className="w-screen min-h-screen relative overflow-hidden">
+        
+        {/* 🌸 LEFT 1 */}
+        <div
+          ref={left1.ref}
+          className={`absolute reveal from-left ${
+            left1.show ? "show" : ""
+          }`}
+        >
           <Image
             src={Flower}
             alt="flower"
-            className="w-48 opacity-15 absolute"
+            className="w-48 opacity-15"
           />
         </div>
+
         <p
           className={`${greatVibes.className} text-center text-4xl pt-20 relative`}
         >
           Om Swastyastu
         </p>
+
         <p
           className={`${montserrat.className} text-center text-xs leading-5 mt-4`}
         >
@@ -127,69 +131,96 @@ export default function Home() {
           Manusa Yadnya <br /> Pawiwahan (Pernikahan) Putra dan Putri kami
         </p>
 
-        <div className="absolute" ref={leftRef}>
+        {/* 🌸 LEFT 2 */}
+        <div
+          ref={left2.ref}
+          className={`absolute reveal from-bottom ${
+            left2.show ? "show" : ""
+          }`}
+        >
           <Image
             src={Flower}
             alt="flower"
-            className="w-48 opacity-15 absolute mt-32 ml-60"
+            className="w-48 opacity-15 mt-32 ml-60"
           />
         </div>
+
         <Image
           src={Max}
           alt="foto"
           className="w-61 h-91 rounded-full mx-auto mt-12 border-r-4 border-yellow-500 relative"
         />
+
         <p className={`${playfair.className} text-center mt-12 text-2xl`}>
           Lorem ipsum dolor sit amet
         </p>
+
         <p
           className={`${montserrat.className} text-center my-6 text-xs italic`}
         >
           Putra Pertama dari pasangan
         </p>
+
         <p className={`${montserrat.className} text-center font-bold text-sm`}>
           I Made John Doe & Ni Putu Jane Doe
         </p>
+
         <p className={`${montserrat.className} text-center mt-6 text-[10px]`}>
           Banjar Lorem, Desa Lorem, Kec. Lorem, Kab. Lorem
         </p>
 
-        <div className="absolute" ref={rightRef}>
+        {/* 🌸 RIGHT 1 */}
+        <div
+          ref={right1.ref}
+          className={`absolute reveal from-right ${
+            right1.show ? "show" : ""
+          }`}
+        >
           <Image
-            className="w-48 opacity-15 absolute mt-44 rotate-180 -translate-x-10"
+            className="w-48 opacity-15 mt-44 rotate-180 -translate-x-10"
             src={Flower}
             alt="flower"
           />
         </div>
+
         <Image
           src={Max}
           alt="foto"
           className="w-61 h-91 rounded-full mx-auto mt-24 border-r-4 border-yellow-500 relative"
         />
+
         <p className={`${playfair.className} text-center mt-12 text-2xl`}>
           Lorem ipsum dolor sit amet
         </p>
+
         <p
           className={`${montserrat.className} text-center my-6 text-xs italic`}
         >
           Putra Pertama dari pasangan
         </p>
+
         <p className={`${montserrat.className} text-center font-bold text-sm`}>
           I Made John Doe & Ni Putu Jane Doe
         </p>
+
         <p className={`${montserrat.className} text-center mt-6 text-[10px]`}>
           Banjar Lorem, Desa Lorem, Kec. Lorem, Kab. Lorem
         </p>
-        <div className="absolute" ref={rightRef}>
+
+        {/* 🌸 RIGHT 2 */}
+        <div
+          ref={right2.ref}
+          className={`absolute reveal from-top ${
+            right2.show ? "show" : ""
+          }`}
+        >
           <Image
             src={Flower}
             alt="flower"
-            className="w-48 opacity-15 absolute rotate-180 ml-60"
+            className="w-48 opacity-15 rotate-180 ml-60"
           />
         </div>
       </div>
-
-      <div></div>
     </div>
   );
 }

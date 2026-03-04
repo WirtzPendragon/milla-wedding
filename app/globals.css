@@ -24,3 +24,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.reveal {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 2s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* arah */
+.from-left {
+  transform: translateX(-80px) scale(0.6);
+}
+.from-right {
+  transform: translateX(80px) scale(0.6);
+}
+.from-top {
+  transform: translateY(-80px) scale(0.6);
+}
+.from-bottom {
+  transform: translateY(80px) scale(0.6);
+}
+
+.reveal.show.from-left,
+.reveal.show.from-right,
+.reveal.show.from-top,
+.reveal.show.from-bottom {
+  transform: translateX(0) translateY(0) scale(1);
+}
