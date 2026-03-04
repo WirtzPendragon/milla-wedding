@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { Great_Vibes, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Max from "../public/max.jpg";
 import Flower from "../public/flower.png";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const greatVibes = Great_Vibes({
   weight: "400",
@@ -21,6 +26,45 @@ const playfair = Playfair_Display({
 });
 
 export default function Home() {
+  const leftRef = useRef<HTMLDivElement | null>(null);
+  const rightRef = useRef<HTMLDivElement | null>(null);
+  const topRef = useRef<HTMLDivElement | null>(null);
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const animate = (el: any, x = 0, y = 0, delay = 0) => {
+      gsap.fromTo(
+        el,
+        {
+          x,
+          y,
+          opacity: 0,
+          scale: 0.7,
+        },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 3,
+          ease: "power3.out",
+          delay,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+        },
+      );
+    };
+
+    animate(leftRef.current, -100, 0, 0.1);
+    animate(rightRef.current, 100, 0, 0.2);
+    animate(topRef.current, 0, -100, 0.3);
+    animate(bottomRef.current, 0, 100, 0.4);
+  }, []);
+
   return (
     <div>
       <div className="h-screen w-screen bg-black grid items-end">
@@ -63,7 +107,13 @@ export default function Home() {
       </div>
 
       <div className="w-screen h-screen">
-        <Image src={Flower} alt="flower" className="w-48 opacity-15 absolute" />
+        <div className="absolute" ref={leftRef}>
+          <Image
+            src={Flower}
+            alt="flower"
+            className="w-48 opacity-15 absolute"
+          />
+        </div>
         <p
           className={`${greatVibes.className} text-center text-4xl pt-20 relative`}
         >
@@ -77,12 +127,13 @@ export default function Home() {
           Manusa Yadnya <br /> Pawiwahan (Pernikahan) Putra dan Putri kami
         </p>
 
-        <div></div>
-        <Image
-          src={Flower}
-          alt="flower"
-          className="w-48 opacity-15 absolute mt-32 ml-60"
-        />
+        <div className="absolute" ref={leftRef}>
+          <Image
+            src={Flower}
+            alt="flower"
+            className="w-48 opacity-15 absolute mt-32 ml-60"
+          />
+        </div>
         <Image
           src={Max}
           alt="foto"
@@ -103,11 +154,13 @@ export default function Home() {
           Banjar Lorem, Desa Lorem, Kec. Lorem, Kab. Lorem
         </p>
 
-        <Image
-          src={Flower}
-          alt="flower"
-          className="w-48 opacity-15 absolute mt-44 rotate-180 -translate-x-10"
-        />
+        <div className="absolute" ref={rightRef}>
+          <Image
+            className="w-48 opacity-15 absolute mt-44 rotate-180 -translate-x-10"
+            src={Flower}
+            alt="flower"
+          />
+        </div>
         <Image
           src={Max}
           alt="foto"
@@ -127,16 +180,16 @@ export default function Home() {
         <p className={`${montserrat.className} text-center mt-6 text-[10px]`}>
           Banjar Lorem, Desa Lorem, Kec. Lorem, Kab. Lorem
         </p>
-        <Image
-          src={Flower}
-          alt="flower"
-          className="w-48 opacity-15 absolute rotate-180 ml-60"
-        />
+        <div className="absolute" ref={rightRef}>
+          <Image
+            src={Flower}
+            alt="flower"
+            className="w-48 opacity-15 absolute rotate-180 ml-60"
+          />
+        </div>
       </div>
 
-      <div>
-        
-      </div>
+      <div></div>
     </div>
   );
 }
