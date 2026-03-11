@@ -62,7 +62,7 @@ export default function Home() {
     <div>
       {/* ================= HERO ================= */}
       <div className="h-screen w-screen grid items-end">
-        <div className="w-full h-full absolute">
+        <div className="w-screen h-screen absolute">
           <Image
             src={IMG3}
             alt="hero"
