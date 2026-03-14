@@ -23,11 +23,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wahyu & Milla Wedding",
-  description: "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla.",
   icons: {
     icon: "/icon.ico", 
   },
+  description: "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla.",
+  title: "Wahyu & Milla Wedding",
   metadataBase: new URL("https://wahyu-milla-wedding.vercel.app"),
   openGraph: {
     title: "Wahyu & Milla Wedding",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Wahyu & Milla Wedding",
     images: [
       {
-        url: "https://wahyu-milla-wedding.vercel.app/gallery/img_12.jpg", // Pakai path relatif saja, Next.js yang urus
+        url: "https://wahyu-milla-wedding.vercel.app/gallery/og-image.jpg", // Pakai path relatif saja, Next.js yang urus
         width: 1200,
         height: 630,
         alt: "Wahyu & Milla Wedding",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wahyu & Milla Wedding",
     description: "The Wedding of Wahyu & Milla.",
-    images: ["https://wahyu-milla-wedding.vercel.app/gallery/img_12.jpg"],
+    images: ["https://wahyu-milla-wedding.vercel.app/gallery/og-image.jpg"],
   },
 };
 
