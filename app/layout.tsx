@@ -25,21 +25,24 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Wahyu & Milla Wedding Invitation",
   description:
-    "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla. Save the date dan rayakan hari bahagia kami bersama keluarga dan sahabat.",
+    "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla.",
   openGraph: {
     title: "Wahyu & Milla Wedding Invitation",
     description:
-      "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla. Save the date dan rayakan hari bahagia kami bersama keluarga dan sahabat.",
-    url: "https://wahyu-milla-wedding.vercel.app/",
+      "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla.",
+    url: "https://wahyu-milla-wedding.vercel.app",
     siteName: "Wahyu & Milla Wedding",
     images: [
       {
-        url: "../public/gallery/img_2.jpg",
+        url: "https://wahyu-milla-wedding.vercel.app/og.jpg",
         width: 1200,
         height: 630,
       },
     ],
     type: "website",
+  },
+  other: {
+    "fb:app_id": "1234567890",
   },
 };
 
@@ -61,7 +64,7 @@ export default function RootLayout({
         />
         <meta
           property="og:image"
-          content="https://wahyu-milla-wedding.vercel.app/gallery/img_2.jpg"
+          content="https://wahyu-milla-wedding.vercel.app/gallery/img_12.jpg"
         />
         <meta
           property="og:url"
@@ -76,7 +79,7 @@ export default function RootLayout({
         />
         <meta
           name="twitter:image"
-          content="https://wahyu-milla-wedding.vercel.app/gallery/img_2.jpg"
+          content="https://wahyu-milla-wedding.vercel.app/gallery/img_12.jpg"
         />
         {children}
       </body>
