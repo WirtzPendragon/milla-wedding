@@ -8,7 +8,7 @@ import Milla from "../public/milla.jpg";
 import IMG1 from "../public/img_1.jpg";
 import IMG3 from "../public/img_3.jpg";
 import IMG4 from "../public/img_4.jpg";
-import Flower from "../public/flower-2.avif";
+import Flower from "../public/flower-2.png";
 import { useEffect, useRef, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -65,34 +65,42 @@ function InvitationContent() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const searchParams = useSearchParams();
+
   const guestName = searchParams.get("to") || "Tamu Undangan";
+  const dateParam = searchParams.get("date");
+  let displayDate = "Sabtu, 04 April 2026";
+  let finalTarget = "2026-04-04T08:00:00";
+
+  if (dateParam === "special") {
+    displayDate = "Jumat, 03 April 2026";
+    finalTarget = "2026-04-03T08:00:00";
+  }
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-  setMounted(true);
+    setMounted(true);
 
-  if (!isOpen) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
+    if (!isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
 
-    if (audioRef.current) {
-      audioRef.current.volume = 0.3;
-      audioRef.current.play().catch(() => {});
+      if (audioRef.current) {
+        audioRef.current.volume = 0.3;
+        audioRef.current.play().catch(() => {});
+      }
     }
-  }
-}, [isOpen]);
+  }, [isOpen]);
 
-if (!mounted) return null;
+  if (!mounted) return null;
   return (
-    
     <main>
       <audio ref={audioRef} loop>
-  <source src="/music/wedding.mp3" type="audio/mpeg" />
-</audio>
+        <source src="/music/wedding.mp3" type="audio/mpeg" />
+      </audio>
       {/* ================= COVER SECTION ================= */}
       {!isOpen && (
-        <div className="fixed inset-0 z-[999] flex flex-col items-center justify-between py-20 text-white transition-all duration-700">
+        <div className="fixed inset-0 z-[999] flex flex-col items-center justify-between py-20 text-[#DDCDD0] transition-all duration-700">
           <div className="absolute inset-0 -z-10">
             <Image
               src={IMG3}
@@ -127,7 +135,7 @@ if (!mounted) return null;
             </div>
             <button
               onClick={() => setIsOpen(true)}
-              className="bg-white text-black px-10 py-3 rounded-full flex items-center gap-3 mx-auto font-semibold hover:bg-[#870D24] hover:text-white transition-all duration-500 shadow-2xl active:scale-95"
+              className="bg-[#DDCDD0] text-black px-10 py-3 rounded-full flex items-center gap-3 mx-auto font-semibold hover:bg-[#870D24] hover:text-[#DDCDD0] transition-all duration-500 shadow-2xl active:scale-95"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -151,8 +159,8 @@ if (!mounted) return null;
 
       {/* ================= MAIN CONTENT ================= */}
       <audio autoPlay loop>
-  <source src="../public/music/wedding.mp3" type="audio/mpeg" />
-</audio>
+        <source src="../public/music/wedding.mp3" type="audio/mpeg" />
+      </audio>
       <div className={`${isOpen ? "block animate-fadeIn" : "hidden"}`}>
         {/* HERO SECTION */}
         <div className="h-screen w-screen grid items-end overflow-hidden">
@@ -164,19 +172,19 @@ if (!mounted) return null;
             />
           </div>
 
-          <div className="relative text-white text-center top-60">
+          <div className="relative text-[#DDCDD0] text-center top-60">
             <div className="flex items-center gap-3 px-22">
-              <div className="flex-1 h-[1px] bg-white"></div>
+              <div className="flex-1 h-[1px] bg-[#DDCDD0]"></div>
               <p className={`${montserrat.className} text-xs`}>
                 Pawiwahan & Mepandes
               </p>
-              <div className="flex-1 h-[1px] bg-white"></div>
+              <div className="flex-1 h-[1px] bg-[#DDCDD0]"></div>
             </div>
             <p className={`${greatVibes.className} text-4xl my-2`}>
               Wahyu & Milla
             </p>
             <p className={`${montserrat.className} text-xs`}>
-              Sabtu, 04 April 2026
+              {displayDate}
             </p>
           </div>
 
@@ -203,7 +211,7 @@ if (!mounted) return null;
         </div>
 
         {/* CONTENT AREA */}
-        <div className="w-screen min-h-screen relative overflow-hidden bg-white pb-20">
+        <div className="w-screen min-h-screen relative overflow-hidden bg-[#4A0512] pb-20">
           <Reveal direction="left" className="absolute">
             <Image
               src={Flower}
@@ -212,31 +220,8 @@ if (!mounted) return null;
             />
           </Reveal>
 
-          <div className="py-20 text-center px-4">
-            <div className="border-2 rounded-[40px] p-1 border-[#870D24]">
-              <div className="border-2 rounded-[36px] p-7 border-[#870D24]">
-                <Reveal>
-                  <p className={`${montserrat.className} text-xs`}>
-                    Wahai pasangan suami-istri, semoga kalian tetap bersatu dan
-                    tidak pernah terpisahkan. Semoga kalian mencapai hidup penuh
-                    kebahagiaan.
-                  </p>
-                  <p className={`${montserrat.className} text-xs mt-10`}>
-                    Ihaiva stam ma vi yaustam, visvam ayur vyasnutam.
-                  </p>
-                  <p
-                    className={`${montserrat.className} text-xs font-bold mt-2 italic text-[#4A0512]`}
-                  >
-                    {" "}
-                    (Rg Veda X.85.42){" "}
-                  </p>
-                </Reveal>
-              </div>
-            </div>
-          </div>
-
           <Reveal>
-            <p className={`${greatVibes.className} text-center text-4xl`}>
+            <p className={`${greatVibes.className} text-center text-4xl pt-22`}>
               Om Swastyastu
             </p>
             <p
@@ -263,7 +248,7 @@ if (!mounted) return null;
               <Image
                 src={Wahyu}
                 alt="Wahyu"
-                className="w-61 h-91 rounded-[40px] mx-auto border-2 shadow-xl border-[#870D24] object-cover"
+                className="w-61 h-91 rounded-[40px] mx-auto border-2 shadow-xl border-[#DDCDD0] object-cover"
               />
               <p className={`${playfair.className} text-center mt-12 text-2xl`}>
                 I Kadek Wahyu Suseyawan
@@ -285,40 +270,47 @@ if (!mounted) return null;
               </p>
             </Reveal>
 
-
             {/* Milla Pawiwahan */}
             <Reveal>
               <div className="relative">
-            <Reveal direction="right" className="absolute left-0 bottom-1/2">
-              <Image
-                className="w-48 -z-10 opacity-15 rotate-180 mt-44 -translate-x-16"
-                src={Flower}
-                alt="flower"
-              />
-            </Reveal>
-              <Image
-                src={Milla}
-                alt="Milla"
-                className="w-61 h-91 rounded-[40px] mx-auto border-2 shadow-xl border-[#870D24] object-cover relative"
-              />
-              <p className={`${playfair.className} text-center mt-12 text-2xl`}>
-                Putu Milla Kristina Vanyeri, S.M.
-              </p>
-              <p
-                className={`${montserrat.className} text-center my-6 text-xs italic`}
-              >
-                Putri pertama dari pasangan
-              </p>
-              <p
-                className={`${montserrat.className} text-center font-bold text-sm`}
-              >
-                Wayan Budiarnaya & Ni Putu Miniarti
-              </p>
+                <Reveal
+                  direction="right"
+                  className="absolute left-0 bottom-1/2"
+                >
+                  <Image
+                    className="w-48 -z-10 opacity-15 rotate-180 mt-44 -translate-x-16"
+                    src={Flower}
+                    alt="flower"
+                  />
+                </Reveal>
+                <Image
+                  src={Milla}
+                  alt="Milla"
+                  className="w-61 h-91 rounded-[40px] mx-auto border-2 shadow-xl border-[#DDCDD0] object-cover relative"
+                />
+                <p
+                  className={`${playfair.className} text-center mt-12 text-2xl`}
+                >
+                  Putu Milla Kristina Vanyeri, S.M.
+                </p>
+                <p
+                  className={`${montserrat.className} text-center my-6 text-xs italic`}
+                >
+                  Putri pertama dari pasangan
+                </p>
+                <p
+                  className={`${montserrat.className} text-center font-bold text-sm`}
+                >
+                  Wayan Budiarnaya & Ni Putu Miniarti
+                </p>
+                <p
+                  className={`${montserrat.className} text-center mt-6 text-[10px]`}
+                >
+                  Banjar Dinas Asah Panji, Desa Wanagiri, Sukasada
+                </p>
               </div>
             </Reveal>
           </div>
-              
-
 
           {/* ================= MEPANDES SECTION ================= */}
           <div className="mt-4 pb-20 relative">
@@ -340,7 +332,7 @@ if (!mounted) return null;
               <Image
                 src={Wahyu}
                 alt="Wahyu"
-                className="w-61 h-91 rounded-[40px] mx-auto mt-12 border-2 shadow-xl border-[#870D24] object-cover"
+                className="w-61 h-91 rounded-[40px] mx-auto mt-12 border-2 shadow-xl border-[#DDCDD0] object-cover"
               />
               <p className={`${playfair.className} text-center mt-12 text-2xl`}>
                 I Kadek Wahyu Suseyawan
@@ -359,16 +351,46 @@ if (!mounted) return null;
               <p
                 className={`${montserrat.className} text-center mt-6 text-[10px]`}
               >
-                Banjar Dinas Asah Panji, Desa Wanagiri, Sukasada
+                Banjar Manik Gunung, Desa Selanbawak, Marga
               </p>
             </Reveal>
           </div>
 
+          <Reveal direction="left" className="absolute right-0 mt-44">
+            <Image
+              src={Flower}
+              alt="flower"
+              className="w-48 opacity-15 ml-68"
+            />
+          </Reveal>
+          <div className="py-20 text-center px-4">
+            <div className="border-2 rounded-[40px] p-1 border-[#DDCDD0]">
+              <div className="border-2 rounded-[36px] p-7 border-[#DDCDD0]">
+                <Reveal>
+                  <p className={`${montserrat.className} text-xs`}>
+                    Wahai pasangan suami-istri, semoga kalian tetap bersatu dan
+                    tidak pernah terpisahkan. Semoga kalian mencapai hidup penuh
+                    kebahagiaan.
+                  </p>
+                  <p className={`${montserrat.className} text-xs mt-10`}>
+                    Ihaiva stam ma vi yaustam, visvam ayur vyasnutam.
+                  </p>
+                  <p
+                    className={`${montserrat.className} text-xs font-bold mt-2 italic text-[#4A0512]`}
+                  >
+                    {" "}
+                    (Rg Veda X.85.42){" "}
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+
           {/* ================= DETAIL ACARA ================= */}
-          <div className="w-screen bg-[#4A0512] mt-20 pb-20">
+          <div className="w-screen bg-[#DDCDD0] mt-20 pb-20">
             <Reveal>
               <p
-                className={`${greatVibes.className} text-4xl text-white text-center pt-12`}
+                className={`${greatVibes.className} text-4xl text-[#4A0512] text-center pt-12`}
               >
                 Detail Acara
               </p>
@@ -378,29 +400,29 @@ if (!mounted) return null;
                 <Image
                   src={IMG4}
                   alt="Detail"
-                  className="rounded-[40px] border-white border-2 shadow-2xl"
+                  className="rounded-[40px] border-[#4A0512] border-4 shadow-2xl"
                 />
               </Reveal>
 
               <div className="relative">
                 {/* Gradient Spacer */}
-                <div className="w-full h-40 bg-gradient-to-t from-white via-white/70 to-transparent -mt-20 -translate-y-20"></div>
+                <div className="w-full h-40 bg-gradient-to-t from-[#4A0512] via-[#4A0512]/70 to-transparent -mt-20 -translate-y-20"></div>
 
-                <div className="bg-white w-full pb-10 rounded-b-[40px] text-center px-4 -mt-20">
+                <div className="bg-[#4A0512] w-full pb-10 rounded-b-[40px] text-center px-4 -mt-20">
                   <Reveal>
                     <p className={`${greatVibes.className} text-4xl pt-12`}>
                       Pawiwahan
                     </p>
                     <p className={`${montserrat.className} text-base pt-12`}>
-                      Sabtu, 04 April 2026
+                      {displayDate}
                     </p>
 
                     <div className="flex items-center gap-3 px-10 mt-4">
-                      <div className="flex-1 h-[1px] bg-black"></div>
+                      <div className="flex-1 h-[1px] bg-white"></div>
                       <p className={`${montserrat.className} text-xs`}>
                         BERTEMPAT DI
                       </p>
-                      <div className="flex-1 h-[1px] bg-black"></div>
+                      <div className="flex-1 h-[1px] bg-white"></div>
                     </div>
 
                     <p
@@ -413,14 +435,14 @@ if (!mounted) return null;
                     <div className="flex justify-center mt-8">
                       <Link
                         href="https://maps.google.com"
-                        className={`${montserrat.className} bg-[#870D24] flex gap-2 rounded-[40px] text-sm py-3 px-6 text-white font-semibold`}
+                        className={`${montserrat.className} bg-[#870D24] flex gap-2 rounded-[40px] text-sm py-3 px-6 text-[#DDCDD0] font-semibold`}
                       >
                         Lokasi Acara
                       </Link>
                     </div>
 
                     <div className="m-5 pt-8">
-                      <Countdown />
+                      <Countdown target={finalTarget} />
                     </div>
                   </Reveal>
                 </div>
@@ -429,7 +451,7 @@ if (!mounted) return null;
           </div>
 
           {/* GALLERY & WISHES */}
-          <div className="bg-white">
+          <div className="bg-[#4A0512]">
             <Reveal>
               <Gallery />
             </Reveal>

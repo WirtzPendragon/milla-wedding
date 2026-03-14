@@ -54,7 +54,7 @@ export default function Wishes() {
       <div className="bg-white/80 backdrop-blur-sm rounded-[30px] shadow-xl border border-gray-100 overflow-hidden">
         
         {/* Header Section */}
-        <div className="bg-[#870D24] p-6 text-center">
+        <div className="bg-[#4A0512] p-6 text-center">
           <h2 className={`${greatVibes.className} text-3xl text-white mb-1`}>
             Wishes & Prayers
           </h2>
@@ -69,7 +69,7 @@ export default function Wishes() {
             <input
               type="text"
               placeholder="Nama Lengkap"
-              className="w-full border-b border-gray-200 focus:border-[#870D24] outline-none py-2 transition-all bg-transparent"
+              className="w-full border-b border-gray-200 focus:border-[#4A0512] outline-none py-2 transition-all text-[#4A0512] bg-transparent"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -79,7 +79,7 @@ export default function Wishes() {
           <div className="space-y-1">
             <textarea
               placeholder="Berikan ucapan manis & doa restu..."
-              className="w-full border border-gray-200 focus:border-[#870D24] outline-none p-3 rounded-2xl transition-all bg-gray-50/50"
+              className="w-full border border-gray-200 focus:border-[#4A0512] text-[#4A0512] outline-none p-3 rounded-2xl transition-all bg-gray-50/50"
               rows={3}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -89,7 +89,7 @@ export default function Wishes() {
 
           <div className="space-y-1">
             <select
-              className="w-full border-b border-gray-200 focus:border-[#870D24] outline-none py-2 transition-all bg-transparent text-gray-600 cursor-pointer"
+              className="w-full border-b border-gray-200 focus:border-[#4A0512] outline-none py-2 transition-all bg-transparent text-gray-600 cursor-pointer"
               value={attendance}
               onChange={(e) => setAttendance(e.target.value)}
               required
@@ -97,13 +97,14 @@ export default function Wishes() {
               <option value="" disabled>Konfirmasi Kehadiran</option>
               <option value="Hadir">Hadir</option>
               <option value="Tidak Hadir">Tidak Hadir</option>
+              <option value="Ragu Ragu">Ragu Ragu</option>
             </select>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#870D24] hover:bg-[#4A0512] text-white font-semibold py-3 rounded-full transition-all duration-300 shadow-md active:scale-95 disabled:opacity-50"
+            className="w-full bg-[#4A0512] hover:bg-[#4A0512] text-white font-semibold py-3 rounded-full transition-all duration-300 shadow-md active:scale-95 disabled:opacity-50"
           >
             {loading ? "Mengirim..." : "Kirim Ucapan"}
           </button>
@@ -116,7 +117,7 @@ export default function Wishes() {
           {comments.map((c) => (
             <div key={c.id} className="bg-gray-50 rounded-2xl p-4 border border-gray-100 shadow-sm animate-fadeIn">
               <div className="flex justify-between items-start mb-2">
-                <p className="font-bold text-[#870D24] text-sm uppercase">{c.name}</p>
+                <p className="font-bold text-[#4A0512] text-sm uppercase">{c.name}</p>
                 <span className={`text-[10px] px-2 py-1 rounded-full ${
                   c.attendance === 'Hadir' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
                 }`}>

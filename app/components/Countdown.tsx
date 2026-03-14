@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-export default function Countdown() {
-  const targetDate = new Date("2026-04-04T08:00:00").getTime();
+// 1. Tambahkan Interface agar bisa menerima data 'target'
+interface CountdownProps {
+  target?: string;
+}
 
+export default function Countdown({ target = "2026-04-04T08:00:00" }: CountdownProps) {
   const [timeLeft, setTimeLeft] = useState({
     hari: 0,
     jam: 0,
@@ -13,9 +16,18 @@ export default function Countdown() {
   });
 
   useEffect(() => {
+    // 2. Gunakan target dari props (misal: "2026-04-03T08:00:00")
+    const targetTime = new Date(target).getTime();
+
     const interval = setInterval(() => {
       const now = new Date().getTime();
-      const distance = targetDate - now;
+      const distance = targetTime - now;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        setTimeLeft({ hari: 0, jam: 0, menit: 0, detik: 0 });
+        return;
+      }
 
       const hari = Math.floor(distance / (1000 * 60 * 60 * 24));
       const jam = Math.floor((distance / (1000 * 60 * 60)) % 24);
@@ -26,7 +38,7 @@ export default function Countdown() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [target]); // 3. Re-run kalau target berubah dari URL
 
   return (
     <div className="flex justify-center gap-4">

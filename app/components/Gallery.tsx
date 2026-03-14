@@ -31,7 +31,7 @@ export default function Gallery() {
         Our Gallery
       </p>
 
-      <div className="mb-3 overflow-hidden rounded-3xl">
+      <div className="mb-3 overflow-hidden rounded-3xl border-white border-2">
         <Image
           src={IMG12}
           alt="gallery"
@@ -41,13 +41,13 @@ export default function Gallery() {
 
         <div className="columns-2 gap-3 space-y-3">
         {images.map((src, i) => (
-          <div key={i} className="overflow-hidden rounded-3xl">
+          <div key={i} className="overflow-hidden rounded-3xl border-white border-2">
             <Image
               src={src}
               alt="gallery"
               width={500}
               height={700}
-              className="w-full h-auto object-cover hover:scale-105 transition duration-500"
+              className="w-full h-auto object-cover hover:scale-105 transition duration-50"
             />
           </div>
         ))}
