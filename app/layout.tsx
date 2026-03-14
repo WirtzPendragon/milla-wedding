@@ -61,7 +61,7 @@ export default function RootLayout({
         />
         <meta
           property="og:image"
-          content="../public/gallery/img_2.jpg"
+          content="https://wahyu-milla-wedding.vercel.app/gallery/img_2.jpg"
         />
         <meta
           property="og:url"
@@ -76,7 +76,7 @@ export default function RootLayout({
         />
         <meta
           name="twitter:image"
-          content="../public/gallery/img_2.jpg"
+          content="https://wahyu-milla-wedding.vercel.app/gallery/img_2.jpg"
         />
         {children}
       </body>
