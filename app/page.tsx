@@ -475,7 +475,6 @@ function InvitationContent() {
                     menyediakan sarana kado digital berikut ini:
                   </p>
                 </Reveal>
-
                 <Reveal className="max-w-sm mx-auto">
                   <div className="border-2 border-[#870D24] rounded-[30px] p-8 shadow-lg bg-[#fdfafb] relative overflow-hidden">
                     {/* Dekorasi bunga kecil di pojok kartu */}
