@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Wahyu & Milla Wedding",
     images: [
       {
-        url: "/public/gallery/img_12.jpg", // Pakai path relatif saja, Next.js yang urus
+        url: "https://wahyu-milla-wedding.vercel.app/gallery/img_12.jpg", // Pakai path relatif saja, Next.js yang urus
         width: 1200,
         height: 630,
         alt: "Wahyu & Milla Wedding",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wahyu & Milla Wedding",
     description: "The Wedding of Wahyu & Milla.",
-    images: ["/gallery/img_12.jpg"],
+    images: ["https://wahyu-milla-wedding.vercel.app/gallery/img_12.jpg"],
   },
 };
 
