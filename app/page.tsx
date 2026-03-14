@@ -219,7 +219,7 @@ function InvitationContent() {
             <Image
               src={Flower}
               alt="flower"
-              className="w-48 opacity-15 rotate-90"
+              className="w-48 opacity-40 rotate-90"
             />
           </Reveal>
 
@@ -242,7 +242,7 @@ function InvitationContent() {
               <Image
                 src={Flower}
                 alt="flower"
-                className="w-48 opacity-15 ml-68"
+                className="w-48 opacity-40 ml-68"
               />
             </Reveal>
 
@@ -281,7 +281,7 @@ function InvitationContent() {
                   className="absolute left-0 bottom-1/2"
                 >
                   <Image
-                    className="w-48 -z-10 opacity-15 rotate-180 mt-44 -translate-x-16"
+                    className="w-48 -z-10 opacity-40 rotate-180 mt-44 -translate-x-16"
                     src={Flower}
                     alt="flower"
                   />
@@ -327,7 +327,7 @@ function InvitationContent() {
               <Image
                 src={Flower}
                 alt="flower"
-                className="w-48 opacity-15 ml-68"
+                className="w-48 opacity-40 ml-68"
               />
             </Reveal>
 
@@ -344,7 +344,7 @@ function InvitationContent() {
 
             <Reveal direction="right" className="absolute left-0 mt-2">
               <Image
-                className="w-48 opacity-15 rotate-180 -translate-x-16"
+                className="w-48 opacity-40 rotate-180 -translate-x-16"
                 src={Flower}
                 alt="flower"
               />
@@ -363,7 +363,7 @@ function InvitationContent() {
             <Image
               src={Flower}
               alt="flower"
-              className="w-48 opacity-15 ml-68"
+              className="w-48 opacity-40 ml-68"
             />
           </Reveal>
           <div className="py-20 text-center px-4">
@@ -371,18 +371,16 @@ function InvitationContent() {
               <div className="border-2 rounded-[36px] p-7 border-[#DDCDD0]">
                 <Reveal>
                   <p className={`${montserrat.className} text-xs`}>
-                    Wahai pasangan suami-istri, semoga kalian tetap bersatu dan
-                    tidak pernah terpisahkan. Semoga kalian mencapai hidup penuh
-                    kebahagiaan.
+                    Wahai pasangan suami-istri, semoga kalian tetap bersatu dan tidak pernah terpisahkan. Semoga kalian mencapai hidup penuh kebahagiaan, tinggal di rumah yang penuh kegembiraan bersama seluruh keturunanmu.
                   </p>
                   <p className={`${montserrat.className} text-xs mt-10`}>
-                    Ihaiva stam ma vi yaustam, visvam ayur vyasnutam.
+                    Ihaiva stam ma vi yaustam, visvam ayur vyasnutam, kridantau putrair naptrbhih, modamanau sve grhe.
                   </p>
                   <p
-                    className={`${montserrat.className} text-xs font-bold mt-2 italic text-[#4A0512]`}
+                    className={`${montserrat.className} text-xs font-bold mt-2 italic text-white`}
                   >
                     {" "}
-                    (Rg Veda X.85.42){" "}
+                    (Rg Veda X.85.42)
                   </p>
                 </Reveal>
               </div>
@@ -414,7 +412,7 @@ function InvitationContent() {
                 <div className="bg-[#4A0512] w-full pb-10 rounded-b-[40px] text-center px-4 -mt-20">
                   <Reveal>
                     <p className={`${greatVibes.className} text-4xl pt-12`}>
-                      Pawiwahan
+                      Resepsi
                     </p>
                     <p className={`${montserrat.className} text-base pt-12`}>
                       {displayDate}
@@ -437,7 +435,7 @@ function InvitationContent() {
 
                     <div className="flex justify-center mt-8">
                       <Link
-                        href="https://maps.google.com"
+                        href="https://maps.app.goo.gl/Bk51oVq2hhG4h2ig6?g_st=iw"
                         className={`${montserrat.className} bg-[#870D24] flex gap-2 rounded-[40px] text-sm py-3 px-6 text-[#DDCDD0] font-semibold`}
                       >
                         Lokasi Acara
@@ -579,6 +577,55 @@ function InvitationContent() {
                 </Reveal>
               </div>
             </Reveal>
+            {/* HERO SECTION */}
+        <div className="h-screen w-screen grid overflow-hidden">
+          
+          <div className="w-screen h-screen absolute">
+            <Image
+              src={IMG1}
+              alt="hero"
+              className="w-screen h-screen object-cover"
+            />
+          </div>
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full relative"
+          >
+            <path
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28 70.36-4.37,136.33-33.31,206.8-37.5 C438.64,32.43,512.34,53.67,583,72 c69.27,17.95,138.3,24.88,209.4,13.08 36.15-6,69.85-17.84,104.45-29.34 C989.49,25,1113-14.29,1200,5.19V0Z"
+              opacity=".25"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05 99.41,111.27,165,111,224.58,91.58 c31.15-10.15,60.09-26.07,89.67-39.8 40.92-19,84.73-46,130.83-49.67 36.26-2.85,70.9,9.42,98.6,31.56 31.77,25.39,62.32,62,103.63,73 40.44,10.79,81.35-6.69,119.13-24.28 s75.16-39,116.92-43.05 c59.73-5.85,113.28,22.88,168.9,38.84 30.2,8.66,59,6.17,87.09-7.5 22.43-10.89,48-26.93,60.65-49.24V0Z"
+              opacity=".5"
+              fill="#FFFFFF"
+            ></path>
+            <path
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57 518.83,35,560.06,22.71,603.9,16.91 c59-7.86,117.34,6.42,172.64,24.44 49.27,16,98.87,33.82,148.79,35.55 36.15,1.25,71.32-8.18,106-17.5 37.76-10.14,75.63-22.23,116.92-28.75 32.17-5,63.35-3.47,91.75,5.63V0Z"
+              fill="#FFFFFF"
+            ></path>
+          </svg>
+
+            <p className={`${greatVibes.className} relative text-center -translate-y-16 text-5xl text-white my-2`}>
+              Terima Kasih
+            </p>
+          <div className="relative text-white text-center top-60 -translate-y-24">
+            <div className="flex items-center gap-3 px-22">
+              <div className="flex-1 h-[1px] bg-[#DDCDD0]"></div>
+              <p className={`${montserrat.className} text-xs`}>
+                Kami Yang Berbahagia
+              </p>
+              <div className="flex-1 h-[1px] bg-[#DDCDD0]"></div>
+            </div>
+            <p className={`${greatVibes.className} text-4xl my-2`}>
+              Wahyu & Milla
+            </p>
+          </div>
+
+          
+        </div>
       </div>
     </main>
   );

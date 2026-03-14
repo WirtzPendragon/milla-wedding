@@ -64,3 +64,6 @@ body {
 .flower {
   z-index: -10;
 }
+html {
+  scrollbar-gutter: stable;
+}

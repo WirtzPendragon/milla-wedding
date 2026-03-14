@@ -50,7 +50,7 @@ export default function Wishes() {
   if (!mounted) return null;
 
   return (
-    <div className={`max-w-md mx-auto px-4 pb-20 ${montserrat.className}`}>
+    <div className={`max-w-md mx-auto px-4 pb-20 pt-16 ${montserrat.className}`}>
       <div className="bg-white/80 backdrop-blur-sm rounded-[30px] shadow-xl border border-gray-100 overflow-hidden">
         
         {/* Header Section */}
