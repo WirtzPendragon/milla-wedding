@@ -24,14 +24,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Wahyu & Milla Wedding",
-  description: "The Wedding of Wahyu & Milla. Save the date and celebrate with us.",
+  description: "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla.",
   icons: {
     icon: "/icon.ico", 
   },
   metadataBase: new URL("https://wahyu-milla-wedding.vercel.app"),
   openGraph: {
     title: "Wahyu & Milla Wedding",
-    description: "The Wedding of Wahyu & Milla. Save the date and celebrate with us.",
+    description: "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla.",
     url: "https://wahyu-milla-wedding.vercel.app",
     siteName: "Wahyu & Milla Wedding",
     images: [
