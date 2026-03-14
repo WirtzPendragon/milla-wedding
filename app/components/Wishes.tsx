@@ -140,6 +140,8 @@ export default function Wishes() {
           )}
         </div>
       </div>
+
+      
     </div>
   );
 }

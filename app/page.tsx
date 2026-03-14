@@ -60,6 +60,11 @@ function Reveal({ children, direction = "bottom", className = "" }: any) {
   );
 }
 
+const copyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text);
+  alert("Nomor rekening berhasil disalin!");
+};
+
 /* ================= MAIN CONTENT COMPONENT ================= */
 function InvitationContent() {
   const [isOpen, setIsOpen] = useState(false);
@@ -183,9 +188,7 @@ function InvitationContent() {
             <p className={`${greatVibes.className} text-4xl my-2`}>
               Wahyu & Milla
             </p>
-            <p className={`${montserrat.className} text-xs`}>
-              {displayDate}
-            </p>
+            <p className={`${montserrat.className} text-xs`}>{displayDate}</p>
           </div>
 
           <svg
@@ -455,11 +458,127 @@ function InvitationContent() {
             <Reveal>
               <Gallery />
             </Reveal>
-            <Reveal>
-              <Wishes />
-            </Reveal>
           </div>
         </div>
+            <Reveal>
+              <Wishes />
+              <div className="bg-white py-20 px-6 text-center">
+                <Reveal>
+                  <p
+                    className={`${greatVibes.className} text-4xl text-[#870D24]`}
+                  >
+                    Wedding Gift
+                  </p>
+                  <p
+                    className={`${montserrat.className} text-xs mt-4 mb-10 text-gray-600 px-4`}
+                  >
+                    Doa restu Anda merupakan karunia yang sangat berarti bagi
+                    kami. Namun jika memberi adalah ungkapan kasih Anda, kami
+                    menyediakan sarana kado digital berikut ini:
+                  </p>
+                </Reveal>
+
+                <Reveal className="max-w-sm mx-auto">
+                  <div className="border-2 border-[#870D24] rounded-[30px] p-8 shadow-lg bg-[#fdfafb] relative overflow-hidden">
+                    {/* Dekorasi bunga kecil di pojok kartu */}
+                    <div className="absolute top-[-20px] right-[-20px] opacity-10">
+                      <Image src={Flower} alt="" className="w-24 rotate-45" />
+                    </div>
+
+                    <div className="relative z-10">
+                      <p
+                        className={`${montserrat.className} font-bold text-lg text-[#870D24] mb-2`}
+                      >
+                        BCA
+                      </p>
+                      <p
+                        className={`${montserrat.className} text-sm tracking-widest text-[#870D24] mb-1`}
+                      >
+                        1420937896
+                      </p>
+                      <p
+                        className={`${montserrat.className} text-xs uppercase font-semibold text-gray-500 mb-6`}
+                      >
+                        a.n Putu Milla Kristina Vanyeri
+                      </p>
+
+                      <button
+                        onClick={() => copyToClipboard("1420937896 ")}
+                        className="bg-[#870D24] text-white px-6 py-2 rounded-full text-xs font-semibold hover:bg-[#4A0512] transition-all flex items-center gap-2 mx-auto active:scale-95"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2"
+                          ></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Salin No. Rekening
+                      </button>
+                    </div>
+                    <div className="relative z-10">
+                      <p
+                        className={`${montserrat.className} font-bold text-lg text-[#870D24] mb-2`}
+                      >
+                        BCA
+                      </p>
+                      <p
+                        className={`${montserrat.className} text-sm tracking-widest text-[#870D24] mb-1`}
+                      >
+                        6115666952
+                      </p>
+                      <p
+                        className={`${montserrat.className} text-xs uppercase font-semibold text-gray-500 mb-6`}
+                      >
+                        a.n I Kadek Wahyu Suseyawan
+                      </p>
+
+                      <button
+                        onClick={() => copyToClipboard("6115666952 ")}
+                        className="bg-[#870D24] text-white px-6 py-2 rounded-full text-xs font-semibold hover:bg-[#4A0512] transition-all flex items-center gap-2 mx-auto active:scale-95"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <rect
+                            x="9"
+                            y="9"
+                            width="13"
+                            height="13"
+                            rx="2"
+                            ry="2"
+                          ></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Salin No. Rekening
+                      </button>
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </Reveal>
       </div>
     </main>
   );
