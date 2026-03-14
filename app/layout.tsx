@@ -22,18 +22,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Wahyu & Milla",
-  description: "Wedding Invitation Wahyu & Milla",
-  icons: {
-    // Cukup panggil /namafile karena public adalah folder root
-    icon: "/icon.ico",
-  },
+export const metadata = {
+  title: "Wahyu & Milla Wedding Invitation",
+  description:
+    "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla. Save the date dan rayakan hari bahagia kami bersama keluarga dan sahabat.",
   openGraph: {
-    title: "Wahyu & Milla Wedding",
-    description: "The Wedding of Wahyu & Milla",
+    title: "Wahyu & Milla Wedding Invitation",
+    description:
+      "Kami mengundang Anda untuk menghadiri pernikahan Wahyu dan Milla. Save the date dan rayakan hari bahagia kami bersama keluarga dan sahabat.",
     url: "https://wahyu-milla-wedding.vercel.app/",
-    siteName: "Wedding Invitation",
+    siteName: "Wahyu & Milla Wedding",
     images: [
       {
         url: "../public/gallery/img_2.jpg",
