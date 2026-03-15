@@ -76,8 +76,8 @@ function InvitationContent() {
 
   // Default: Sabtu, 04 April 2026 jam 08:00
   let displayDate = "Sabtu, 04 April 2026";
-  let displayTime = "08:00 WITA";
-  let finalTarget = "2026-04-04T08:00:00";
+  let displayTime = "13:00 WITA";
+  let finalTarget = "2026-04-04T13:00:00";
   let mapUrl = "https://maps.app.goo.gl/Bk51oVq2hhG4h2ig6?g_st=iw";
 
   // Kondisi jika parameter date=special
