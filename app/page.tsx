@@ -78,6 +78,7 @@ function InvitationContent() {
   let displayDate = "Sabtu, 04 April 2026";
   let displayTime = "13:00 WITA";
   let finalTarget = "2026-04-04T13:00:00";
+  let location = "Banjar Manik Gunung, Desa Selanbawak, Marga";
   let mapUrl = "https://maps.app.goo.gl/Bk51oVq2hhG4h2ig6?g_st=iw";
 
   // Kondisi jika parameter date=special
@@ -85,6 +86,7 @@ function InvitationContent() {
     displayDate = "Jumat, 03 April 2026";
     displayTime = "10:00 WITA"; // Misal jamnya beda untuk acara special
     finalTarget = "2026-04-03T10:00:00";
+    location = "Banjar Dinas Asah Panji, Desa Wanagiri, Sukasada";
     mapUrl = "https://maps.app.goo.gl/YMtY6FsSEQ9R6x3r6";
   }
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -445,8 +447,7 @@ function InvitationContent() {
                     <p
                       className={`${montserrat.className} text-center text-xs mx-5 mt-4`}
                     >
-                      Banjar Manik Gunung, Desa Selanbawak, Kec. Marga, Kab.
-                      Tabanan
+                      {location}
                     </p>
 
                     <div className="flex justify-center mt-8">
